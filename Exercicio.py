@@ -1,5 +1,5 @@
 from rich import print
-import match
+import math
 
 n_col = int(input("Qual a quantidade de colunas no teatro ?"))
 n_lin = int(input("Qual a quantidade de linhas no teatro  ?"))
@@ -35,7 +35,7 @@ while True:
     fileira= int(input("Qual a fileira do acento que voce deseja ?-->"))-1
     coluna= int(input("Qual a coluna do acento que voce deseja?-->"))-1
 
-    if linha_acento > n_lin or coluna_acento > n_col:
+    if fileira > n_lin or coluna > n_col:
         input("ERRO: Digite um valor que esteja dentro das diretrzes")
     else:
 
@@ -45,23 +45,23 @@ while True:
             cond= input("Esta cadeira está LIBERADA, deseja RESERVAR ou COMPRAR? :")
             if cond == "comprar":
                 total += preco_acento
-                matriz[filera][coluna]= "V"
+                matriz[fileira][coluna]= "V"
             elif cond== "reservar":
                 total += preco_acento * 0.3
                 matriz[fileira][coluna] = "R"
 
-            elif matriz[fileira][coluna] == "V":
-                print("Esta cadeira foi vendida, não é possivel reservar e nem comprar...")
+        elif matriz[fileira][coluna] == "V":
+            print("Esta cadeira foi vendida, não é possivel reservar e nem comprar...")
         
-            elif matriz[fileira][coluna] == "R":
-                print("Esta cadeira está reservada!")
-                print("Neste caso, voce pagará 70% do valor total da cadeira.")
+        elif matriz[fileira][coluna] == "R":
+            print("Esta cadeira está reservada!")
+            print("Neste caso, voce pagará 70% do valor total da cadeira.")
 
-                cond_2 = input("Deseja comprala? (s/n):  ")
+            cond_2 = input("Deseja comprala? (s/n):  ")
 
-                if cond_2 == "s":
-                    total += preco_acento * 0.7
-                    matriz_teatro[fileira][coluna] = "V"
+            if cond_2 == "s":
+                total += preco_acento * 0.7
+                matriz_teatro[fileira][coluna] = "V"
             
 
 
@@ -79,7 +79,7 @@ while True:
             for y in range (n_col):
                 if(matriz[x][y] !="L"):
                     cont +=1
-            qtd_minima = match.floor(n_col * n_linhas)/2+1
+            qtd_minima = math.floor(n_col * n_linhas)/2+1
             if cont>= qtd_minima:
                    break  
             else:
