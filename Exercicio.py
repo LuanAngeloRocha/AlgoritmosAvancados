@@ -24,24 +24,26 @@ for i in range (n_lin):
 print(matriz)
 
 
-Print("==================================================================================")
+print("==================================================================================")
 while True:
 
+    print("------------------------------------------------------------------------------------")
     print("O preço de cada cadeira é 100 reais")
 
-    print()
+    print("------------------------------------------------------------------------------------")
 
     print("Qual acento deseja: ")
     fileira= int(input("Qual a fileira do acento que voce deseja ?-->"))-1
     coluna= int(input("Qual a coluna do acento que voce deseja?-->"))-1
 
     if fileira > n_lin or coluna > n_col:
+        print("------------------------------------------------------------------------------------")
         input("ERRO: Digite um valor que esteja dentro das diretrzes")
+        print("------------------------------------------------------------------------------------")
     else:
 
     
-        if matriz [fileira][coluna] == "d":
-            
+        if matriz [fileira][coluna] == "D":
             cond= input("Esta cadeira está LIBERADA, deseja RESERVAR ou COMPRAR? :")
             if cond == "comprar":
                 total += preco_acento
@@ -61,7 +63,7 @@ while True:
 
             if cond_2 == "s":
                 total += preco_acento * 0.7
-                matriz_teatro[fileira][coluna] = "V"
+                matriz[fileira][coluna] = "V"
             
 
 
@@ -79,7 +81,7 @@ while True:
             for y in range (n_col):
                 if(matriz[x][y] !="L"):
                     cont +=1
-            qtd_minima = math.floor(n_col * n_linhas)/2+1
+            qtd_minima = math.floor(n_col * n_lin)/2+1
             if cont>= qtd_minima:
                    break  
             else:
